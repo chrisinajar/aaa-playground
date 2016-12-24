@@ -1,3 +1,5 @@
+require('creeps/spawner')
+
 -- This is the primary barebones gamemode script and should be used to assist in initializing your game mode
 BAREBONES_VERSION = "1.00"
 
@@ -117,6 +119,10 @@ end
 ]]
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
+
+  -- initialize the creep spawner
+  CreepCamps:Init()
+
 end
 
 

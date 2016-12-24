@@ -1,7 +1,7 @@
 
 -- Taken from bb template
 if CreepCamps == nil then
-    print ( '[creeps/spawner] creating new CreepCamps object' )
+    DebugPrint ( '[creeps/spawner] creating new CreepCamps object' )
     CreepCamps = class({})
 end
 
@@ -25,14 +25,13 @@ CreepTypes = {
 
 function CreepCamps:Init ()
   CreepCamps = self
-  Timers:CreateTimer(Dynamic_Wrap(CreepCamps, 'SpawnCreeps'))
+  Timers:CreateTimer(Dynamic_Wrap(CreepCamps, 'CreepTimer'))
 end
 
-function CreepCamps:SpawnCreeps ()
+function CreepCamps:CreepTimer ()
   -- scan for creep camps and spawn them
   local camps = Entities:FindAllByName('creep_camp')
   for _,camp in pairs(camps) do
-    print(camp:GetAbsOrigin())
     local numberOfCreeps = math.random(2, 5)
 
     for i=1,numberOfCreeps do
@@ -57,22 +56,10 @@ function CreepCamps:DoSpawn (location, difficulty, maximumUnits)
     DOTA_UNIT_TARGET_FLAG_NONE,
     FIND_ANY_ORDER,
     false)
-  -- direUnits = FindUnitsInRadius(DOTA_TEAM_BADGUYS,
-    -- Vector(0, 0, 0),
-    -- nil,
-    -- FIND_UNITS_EVERYWHERE,
-    -- DOTA_UNIT_TARGET_TEAM_FRIENDLY,
-    -- DOTA_UNIT_TARGET_ALL,
-    -- DOTA_UNIT_TARGET_FLAG_NONE,
-    -- FIND_ANY_ORDER,
-    -- false)
-
-  print(#units)
 
   if (maximumUnits and maximumUnits < #units)
   then
-    print(maximumUnits)
-    print('There are too many units, not doing it!!')
+    DebugPrint('[CREEP SPAWNER] Too many creeps in camp, not spawning more')
     return false
   end
 
@@ -80,4 +67,3 @@ function CreepCamps:DoSpawn (location, difficulty, maximumUnits)
 
   return true
 end
-
