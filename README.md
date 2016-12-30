@@ -14,7 +14,7 @@ To setup the dependencies run `npm install` from within `addons/aaa_playground/g
 
 To build the npc files from their sources, run `gulp` from within `addons/aaa_playground/game/scripts`.
 
-For more details, check [game/scripts/README.md].
+For more details, check [game/scripts/README.md](game/scripts/README.md).
 
 # License
 MIT
