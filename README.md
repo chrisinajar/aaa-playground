@@ -1,6 +1,7 @@
 # aaa playground
 
 # Installation
+* Download and install nodejs https://nodejs.org/
 * Install the dota2 addon manager
   * `npm i -g dota2-addon-manager`
 * Initialize the addons directory using `d2am list` from inside your `dota 2 beta` directory.
